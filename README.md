@@ -1,6 +1,7 @@
 # Dev tools by [Mosaika](https://mosaika.fr)
 
 **A collection of useful functions used when developing WordPress themes and plugins.**
+
 Feel free to use and contribute!
 
 ## Utility functions
@@ -10,10 +11,14 @@ Feel free to use and contribute!
 
 Write something (string, object, array... anything!) in `wp-content/debug.log`
 
+---
+
 #### Pretty print
 ```MSK::pp( [ 'something' => 12 ] )```
 
 Debug something (string, object, array... anything!) on screen.
+
+---
 
 #### Inspect hooks
 ```MSK::inspect_hooks( [ 'woocommerce', 'order' ] );```
