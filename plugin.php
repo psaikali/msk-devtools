@@ -24,9 +24,3 @@ function msk_fire() {
 	}
 }
 add_action( 'plugins_loaded', 'msk_fire' );
-
-add_action( 'wp_footer', function() {
-	MSK::debug(
-		MSK::inspect_hooks( [ 'status', 'post' ] )
-	);
-} );
