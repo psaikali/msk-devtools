@@ -53,7 +53,7 @@ function debug_load_styles() {
 	<style>
 		pre.msk-debug-pp {
 			transition: .5s all ease-out; 
-			background: #bcdcff; 
+			background: #c9eef6; 
 			padding:1em; 
 			margin:1em; 
 			position:relative; 
@@ -62,7 +62,7 @@ function debug_load_styles() {
 			text-align:left;
 			line-height: 1.4;
 			font-size: 16px;
-			border:3px solid #a6c2e1;
+			border:3px solid #bbdde4;
 		}
 
 		pre.msk-debug-pp code {
