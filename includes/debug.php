@@ -127,10 +127,14 @@ function inspect_hooks( $terms = [ 'wp_' ] ) {
 								$classname = get_class( $function_data[0] );
 							}
 
-							$reflection    = new \ReflectionMethod( $classname, $method );
-							$function_name = $classname . '->' . $method;
-
-							$related_hooks[ $key ][] = sprintf( '<strong>%1$s</strong> in <em>%2$s</em> <small>L%3$d</small>', $function_name, str_replace( ABSPATH, '', $reflection->getFileName() ), $reflection->getStartLine() );
+							if ( method_exists( $function_data[0], $method ) ) {
+								$reflection    = new \ReflectionMethod( $classname, $method );
+								$function_name = $classname . '->' . $method;
+								$related_hooks[ $key ][] = sprintf( '<strong>%1$s</strong> in <em>%2$s</em> <small>L%3$d</small>', $function_name, str_replace( ABSPATH, '', $reflection->getFileName() ), $reflection->getStartLine() );
+							} else {
+								$function_name = $classname . '->' . $method;
+								$related_hooks[ $key ][] = sprintf( '<strong>%1$s</strong> (method not found)', $function_name );
+							}
 						} else {
 							$reflection = new \ReflectionFunction( $function_data );
 
