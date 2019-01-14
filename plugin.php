@@ -20,7 +20,9 @@ function msk_fire() {
 	$files = [ 'class', 'utils', 'debug' ];
 
 	foreach ( $files as $file ) {
-		require_once MSK_DEVTOOLS_DIR . "includes/{$file}.php";
+		if ( is_file( MSK_DEVTOOLS_DIR . "includes/{$file}.php" ) ) {
+			require_once MSK_DEVTOOLS_DIR . "includes/{$file}.php";
+		}
 	}
 }
 add_action( 'plugins_loaded', 'msk_fire' );
