@@ -55,3 +55,35 @@ function memory_usage( $size = null ) {
 	$unit = array( 'b', 'kb', 'mb', 'gb', 'tb', 'pb' );
 	return round( $size / pow( 1024, ( $i = floor( log( $size, 1024 ) ) ) ), 2 ) . ' ' . $unit[ $i ];
 }
+
+/**
+ * Remove anonymous object filter
+ *
+ * @link https://wordpress.stackexchange.com/questions/57079/how-to-remove-a-filter-that-is-an-anonymous-object#57088
+ * @param string $tag
+ * @param string $class
+ * @param string $method
+ * @return void
+ */
+function remove_class_hook( $tag, $class, $method ) {
+	$filters = $GLOBALS['wp_filter'][ $tag ];
+
+	if ( empty ( $filters ) ) {
+		return;
+	}
+
+	foreach ( $filters as $priority => $filter ) {
+		foreach ( $filter as $identifier => $function ) {
+			if ( is_array( $function)
+				and is_a( $function['function'][0], $class )
+				and $method === $function['function'][1]
+			) {
+				remove_filter(
+					$tag,
+					array ( $function['function'][0], $method ),
+					$priority
+				);
+			}
+		}
+	}
+}
