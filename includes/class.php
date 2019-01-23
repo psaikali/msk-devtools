@@ -31,4 +31,8 @@ class MSK {
 	public static function memory_usage( ...$args ) {
 		return \MSK\Utils\memory_usage( ...$args );
 	}
+
+	public static function remove_class_hook( ...$args ) {
+		return \MSK\Utils\remove_class_hook( ...$args );
+	}
 }
