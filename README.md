@@ -25,3 +25,10 @@ Debug something (string, object, array... anything!) on screen.
 
 List all the functions (and their file location) triggered by specific hooks.
 If you want to inspect all the hooks containing multiple words, pass an array. The example above will list all functions hooked to a hook that contains `woocommerce` AND `order` in its name.
+
+---
+
+#### Remove unattainable hook
+```MSK::remove_class_hook( 'wp_some_hook_tag', 'ClassName', 'method_function_name' );```
+
+Remove an "unattainable hook" registered within a class where it's impossible to access the instance of this class. Credits to [fuxia](https://wordpress.stackexchange.com/a/57088).
