@@ -66,6 +66,10 @@ function memory_usage( $size = null ) {
  * @return void
  */
 function remove_class_hook( $tag, $class, $method ) {
+	if ( ! isset( $GLOBALS['wp_filter'][ $tag ] ) ) {
+		return;
+	}
+
 	$filters = $GLOBALS['wp_filter'][ $tag ];
 
 	if ( empty ( $filters ) ) {
