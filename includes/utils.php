@@ -91,3 +91,43 @@ function remove_class_hook( $tag, $class, $method ) {
 		}
 	}
 }
+
+/**
+ * Insert element before a specific key in array
+ */
+function array_insert_before( $key, array &$array, $new_key, $new_value ) {
+	if ( array_key_exists( $key, $array ) ) {
+		$new = [];
+
+		foreach ( $array as $k => $value ) {
+			if ( $k === $key ) {
+				$new[ $new_key ] = $new_value;
+			}
+			$new[ $k ] = $value;
+		}
+
+		return $new;
+	}
+	return false;
+}
+
+
+/**
+ * Insert element after a specific key in array
+ */
+function array_insert_after( $key, array &$array, $new_key, $new_value ) {
+	if ( array_key_exists( $key, $array ) ) {
+		$new = [];
+
+		foreach ( $array as $k => $value ) {
+			$new[ $k ] = $value;
+
+			if ( $k === $key ) {
+				$new[ $new_key ] = $new_value;
+			}
+		}
+
+		return $new;
+	}
+	return false;
+}
