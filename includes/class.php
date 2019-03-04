@@ -35,4 +35,12 @@ class MSK {
 	public static function remove_class_hook( ...$args ) {
 		return \MSK\Utils\remove_class_hook( ...$args );
 	}
+
+	public static function array_insert_before( ...$args ) {
+		return \MSK\Utils\array_insert_before( ...$args );
+	}
+
+	public static function array_insert_after( ...$args ) {
+		return \MSK\Utils\array_insert_after( ...$args );
+	}
 }
