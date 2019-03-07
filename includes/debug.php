@@ -136,7 +136,11 @@ function inspect_hooks( $terms = [ 'wp_' ] ) {
 								$related_hooks[ $key ][] = sprintf( '<strong>%1$s</strong> (method not found)', $function_name );
 							}
 						} else {
-							$reflection = new \ReflectionFunction( $function_data );
+							try {
+								$reflection = new \ReflectionFunction( $function_data );
+							} catch (\ReflectionException $e) {
+								continue;
+							}
 
 							if ( $function_data instanceof \Closure ) {
 								$related_hooks[ $key ][] = sprintf( 'closure in <em>%1$s</em> <small>L%2$d</small>', str_replace( ABSPATH, '', $reflection->getFileName() ), $reflection->getStartLine() );
